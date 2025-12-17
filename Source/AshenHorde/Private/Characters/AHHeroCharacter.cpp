@@ -9,7 +9,7 @@
 
 AAHHeroCharacter::AAHHeroCharacter()
 {
-    
+
     // Don't rotate when the controller rotates. Let that just affect the camera.
     bUseControllerRotationPitch = false;
     bUseControllerRotationYaw = false;
@@ -19,7 +19,7 @@ AAHHeroCharacter::AAHHeroCharacter()
     GetCharacterMovement()->bOrientRotationToMovement = true;
     // TODO: We should implement these, in UI or blueprint for more controller
     GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
-    
+
     // TODO: We should implement these, in UI or blueprint for more controller
     // Note: For faster iteration times these variables, and many more, can be tweaked in the Character Blueprint
     // instead of recompiling to adjust them
@@ -35,14 +35,14 @@ AAHHeroCharacter::AAHHeroCharacter()
     CameraBoom->SetupAttachment(RootComponent);
     // TODO: We should implement these, in UI or blueprint for more controller
 
-	CameraBoom->TargetArmLength = 300.0f;
+    CameraBoom->TargetArmLength = 250.0f;
     CameraBoom->SocketOffset = FVector(0.f, 65.f, 65.f);
-	CameraBoom->bUsePawnControlRotation = true;
+    CameraBoom->bUsePawnControlRotation = true;
 
-	// Create a follow camera
-	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
-	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
-	FollowCamera->bUsePawnControlRotation = false;
+    // Create a follow camera
+    FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+    FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+    FollowCamera->bUsePawnControlRotation = false;
 }
 
 void AAHHeroCharacter::BeginPlay()
