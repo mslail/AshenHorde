@@ -7,9 +7,6 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
-
-#include "AHDebugHelper.h"
-
 AAHHeroCharacter::AAHHeroCharacter()
 {
     
@@ -51,6 +48,4 @@ AAHHeroCharacter::AAHHeroCharacter()
 void AAHHeroCharacter::BeginPlay()
 {
     Super::BeginPlay();
-    Debug::Print(FString::Printf(TEXT("Yeeting - Actor: %s"), *GetName()));
-
 }
