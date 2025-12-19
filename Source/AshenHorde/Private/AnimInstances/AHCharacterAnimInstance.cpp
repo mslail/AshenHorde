@@ -9,16 +9,15 @@
 void UAHCharacterAnimInstance::NativeInitializeAnimation()
 {
     Super::NativeInitializeAnimation();
-    Debug::Print(TEXT("INIT"));
 
     // Don't rely on this being valid here
     Character = nullptr;
     CharacterMovementComponent = nullptr;
 }
 
-void UAHCharacterAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
+void UAHCharacterAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 {
-    Super::NativeUpdateAnimation(DeltaSeconds);
+    Super::NativeThreadSafeUpdateAnimation(DeltaSeconds);
 
     // Reacquire until we have a valid owner
     if (!Character)
@@ -27,18 +26,12 @@ void UAHCharacterAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
         if (!PawnOwner)
             return;
 
-        Debug::Print(FString::Printf(TEXT("PawnOwner: %s (%s)"),
-                                     *PawnOwner->GetName(), *PawnOwner->GetClass()->GetName()));
-
         Character = Cast<AAHCharacter>(PawnOwner);
         if (!Character)
         {
-            Debug::Print(FString::Printf(TEXT("PawnOwner is not AAHCharacter, it's: %s"),
-                                         *PawnOwner->GetClass()->GetName()));
             return;
         }
     }
-    Debug::Print(TEXT("Character is present"));
     if (!CharacterMovementComponent)
     {
         CharacterMovementComponent = Character->GetCharacterMovement();

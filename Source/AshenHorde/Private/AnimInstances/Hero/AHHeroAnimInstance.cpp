@@ -7,7 +7,7 @@ void UAHHeroAnimInstance::NativeInitializeAnimation()
     Super::NativeInitializeAnimation();
 }
 
-void UAHHeroAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
+void UAHHeroAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 {
-    Super::NativeUpdateAnimation(DeltaSeconds);
+    Super::NativeThreadSafeUpdateAnimation(DeltaSeconds);
 }
