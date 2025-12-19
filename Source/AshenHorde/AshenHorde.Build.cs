@@ -10,11 +10,16 @@ public class AshenHorde : ModuleRules
 
 		PublicDependencyModuleNames.AddRange(new string[] {
 			"Core",
-			"CoreUObject", 
-			"Engine", 
-			"InputCore", 
+			"CoreUObject",
+			"Engine",
+			"InputCore",
 			"EnhancedInput",
-			"GameplayTags"
+			"GameplayTags",
+			"AIModule",
+			"StateTreeModule",
+			"GameplayStateTreeModule",
+			"UMG",
+			"Slate"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
