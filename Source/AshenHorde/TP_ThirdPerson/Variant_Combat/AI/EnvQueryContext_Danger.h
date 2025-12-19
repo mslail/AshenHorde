@@ -11,7 +11,7 @@
  *  Returns the enemy character's last known danger location
  */
 UCLASS()
-class TP_THIRDPERSON_API UEnvQueryContext_Danger : public UEnvQueryContext
+class ASHENHORDE_API UEnvQueryContext_Danger : public UEnvQueryContext
 {
 	GENERATED_BODY()
 	
