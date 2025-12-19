@@ -7,11 +7,14 @@
 #include "AHHeroAnimInstance.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class ASHENHORDE_API UAHHeroAnimInstance : public UAHCharacterAnimInstance
 {
 	GENERATED_BODY()
-	
+
+public:
+	virtual void NativeInitializeAnimation() override;
+	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 };

@@ -21,7 +21,7 @@ class ASHENHORDE_API UAHCharacterAnimInstance : public UAHAnimInstance
 
 public:
 	virtual void NativeInitializeAnimation() override;
-	virtual void NativeThreadSafeUpdateAnimation(float DeltaSeconds) override;
+	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
 protected:
 	UPROPERTY()
