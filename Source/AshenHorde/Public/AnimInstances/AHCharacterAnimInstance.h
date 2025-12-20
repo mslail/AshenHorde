@@ -33,5 +33,14 @@ protected:
 	float GroundSpeed;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, category = "AnimData|LocomotionData")
-	bool bHasAcceleration;
+	float Direction;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, category = "AnimData|LocomotionData")
+	bool bShouldMove;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, category = "AnimData|LocomotionData")
+	bool bIsFalling;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, category = "AnimData|LocomotionData")
+	bool bIsJumping;
 };
