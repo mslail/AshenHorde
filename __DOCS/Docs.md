@@ -1,1 +1,8 @@
-AI Workflow to Create Meta Human Character : https://www.youtube.com/watch?v=HSHsu3Vz-qU
+# DOCS
+
+## Spawn Process
+
+![alt text](image.png)
+
+Why Gas
+![alt text](image-1.png)
