@@ -1,7 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AnimInstances/AHCharacterAnimInstance.h"
+
 #include "GameFramework/CharacterMovementComponent.h"
+#include "KismetAnimationLibrary.h"
 
 #include "Characters/AHCharacter.h"
 #include "AHDebugHelper.h"
@@ -39,6 +41,25 @@ void UAHCharacterAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSecond
             return;
     }
 
-    GroundSpeed = Character->GetVelocity().Size2D();
-    bHasAcceleration = CharacterMovementComponent->GetCurrentAcceleration().SizeSquared2D() > 0.f;
+    const FVector Velocity = CharacterMovementComponent->Velocity;
+    GroundSpeed = Velocity.Size2D();
+
+    bIsFalling = CharacterMovementComponent->IsFalling();
+
+    const float MinMoveThreshold = 0.01f;
+
+    const bool bHasAcceleration =
+        CharacterMovementComponent->GetCurrentAcceleration().SizeSquared2D() > 0.f;
+
+    bShouldMove = (GroundSpeed > MinMoveThreshold) && bHasAcceleration;
+
+    const float DirectionRaw =
+        UKismetAnimationLibrary::CalculateDirection(Velocity, Character->GetActorRotation());
+
+    const float DirectionClamped = FMath::Clamp(DirectionRaw, -45.f, 45.f);
+
+    Direction = CharacterMovementComponent->bOrientRotationToMovement
+                    ? DirectionClamped
+                    : DirectionRaw;
+    bIsJumping = Velocity.Z > 100.f && bIsFalling;
 }
