@@ -1,8 +1,20 @@
 # Todos
 
-## Implementation Queue
+## Animation and Character Controls
 
-- [ ] AI workflow to create a MetaHuman character  
-      https://www.youtube.com/watch?v=HSHsu3Vz-qU
-- [ ] How to use an aim offset to make your character look around (UE 5.7)  
+- [ ] **Aim Offset (UE 5.7): Make character look around**  
       https://www.youtube.com/watch?v=fAkEbqQH1b8&t=7s
+
+## Character Creation Pipeline
+
+- [ ] **AI workflow: create a MetaHuman character**  
+      https://www.youtube.com/watch?v=HSHsu3Vz-qU
+
+## Rendering and Optimization
+
+- [ ] **Nanite LODs: research how Nanite handles LODs**  
+      https://www.youtube.com/watch?v=UP-dBjoc0vQ
+
+## Gameplay Systems
+
+- [ ] **Gear / Equipment hooking point (mesh access)**

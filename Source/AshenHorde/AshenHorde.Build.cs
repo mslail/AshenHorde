@@ -17,6 +17,7 @@ public class AshenHorde : ModuleRules
 			"InputCore",
 			"EnhancedInput",
 			"GameplayTags",
+			"GameplayTasks",
 			"AIModule",
 			"StateTreeModule",
 			"GameplayStateTreeModule",

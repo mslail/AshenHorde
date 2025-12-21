@@ -4,5 +4,10 @@
 
 ![alt text](image.png)
 
-Why Gas
-![alt text](image-1.png)
+## GAS
+
+![alt text](image-2.png)
+
+## Activation Policy
+
+![alt text](image-3.png)
