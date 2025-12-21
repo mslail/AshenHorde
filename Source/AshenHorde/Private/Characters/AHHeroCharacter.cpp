@@ -16,38 +16,52 @@
 AAHHeroCharacter::AAHHeroCharacter()
 {
 
-    // Don't rotate when the controller rotates. Let that just affect the camera.
     bUseControllerRotationPitch = false;
     bUseControllerRotationYaw = false;
     bUseControllerRotationRoll = false;
 
-    // Configure character movement
-    GetCharacterMovement()->bOrientRotationToMovement = true;
-    // TODO: We should implement these, in UI or blueprint for more controller
-    GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
+    // Movement (free roam like Elden Ring)
+    UCharacterMovementComponent *Move = GetCharacterMovement();
+    Move->bOrientRotationToMovement = true;
+    Move->RotationRate = FRotator(0.f, 540.f, 0.f);
 
-    // TODO: We should implement these, in UI or blueprint for more controller
-    // Note: For faster iteration times these variables, and many more, can be tweaked in the Character Blueprint
-    // instead of recompiling to adjust them
-    GetCharacterMovement()->JumpZVelocity = 500.f;
-    GetCharacterMovement()->AirControl = 0.35f;
-    GetCharacterMovement()->MaxWalkSpeed = 600.f;
-    GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
-    GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
-    GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
+    Move->MaxWalkSpeed = 480.f; // tweak
+    Move->MinAnalogWalkSpeed = 20.f;
+    Move->BrakingDecelerationWalking = 2048.f;
+    Move->BrakingDecelerationFalling = 1500.f;
 
-    // Create a camera boom (pulls in towards the player if there is a collision)
+    Move->JumpZVelocity = 420.f;
+    Move->AirControl = 0.25f;
+
+    // Spring arm (centered behind character)
     CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
     CameraBoom->SetupAttachment(RootComponent);
-    // TODO: We should implement these, in UI or blueprint for more controller
 
-    CameraBoom->TargetArmLength = 250.0f;
+    CameraBoom->TargetArmLength = 320.f;
+
+    // ✅ Centered: no shoulder offset
+    // Use Z only to lift camera above hips
+    CameraBoom->SocketOffset = FVector(0.f, 0.f, 70.f);
+
+    // Boom uses controller rotation => enables look up/down
     CameraBoom->bUsePawnControlRotation = true;
+    CameraBoom->bInheritPitch = true;
+    CameraBoom->bInheritYaw = true;
+    CameraBoom->bInheritRoll = false;
 
-    // Create a follow camera
+    // Collision + smoothing
+    CameraBoom->bDoCollisionTest = true;
+    CameraBoom->bEnableCameraLag = true;
+    CameraBoom->CameraLagSpeed = 12.f;
+    CameraBoom->bEnableCameraRotationLag = true;
+    CameraBoom->CameraRotationLagSpeed = 14.f;
+
+    // Follow camera
     FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
     FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
     FollowCamera->bUsePawnControlRotation = false;
+
+    FollowCamera->FieldOfView = 90.f;
 }
 
 void AAHHeroCharacter::BeginPlay()
