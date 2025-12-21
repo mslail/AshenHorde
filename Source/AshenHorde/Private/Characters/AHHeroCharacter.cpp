@@ -42,7 +42,6 @@ AAHHeroCharacter::AAHHeroCharacter()
     // TODO: We should implement these, in UI or blueprint for more controller
 
     CameraBoom->TargetArmLength = 250.0f;
-    CameraBoom->SocketOffset = FVector(0.f, 65.f, 65.f);
     CameraBoom->bUsePawnControlRotation = true;
 
     // Create a follow camera
