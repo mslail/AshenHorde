@@ -11,3 +11,7 @@
 ## Activation Policy
 
 ![alt text](image-3.png)
+
+## Weapon Structure
+
+![alt text](image-4.png)
