@@ -22,3 +22,7 @@
 ## Combat Feel Good
 
 - [] https://www.youtube.com/shorts/l9XFMPqdRAo
+
+### 3rd AI worst case
+
+- https://www.youtube.com/watch?v=ikVZ5n-p594&t=267s
